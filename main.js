@@ -1,6 +1,5 @@
 let all = document.getElementById("all");
 let countryName = document.getElementById("country-name");
-
 let content = document.getElementById("content");
 let countryDiv = "";
 
@@ -8,7 +7,7 @@ all.addEventListener("click", function (e) {
     e.preventDefault();
     let url = 'https://restcountries.eu/rest/v2/all';
     sendToCountries(url);
-   
+
 })
 countryName.addEventListener("click", function (e) {
     e.preventDefault();
@@ -16,6 +15,7 @@ countryName.addEventListener("click", function (e) {
     let country = countryInput.value;
     let url = 'https://restcountries.eu/rest/v2/name/' + country;
     sendToCountries(url);
+
 })
 function reqListener() {
     var objCountries = JSON.parse(this.responseText);
@@ -38,7 +38,10 @@ function sendToCountries(url) {
 }
 function buildPage(countries) {
     content.innerHTML = '';
-
+    let input_content = document.getElementById("country-input");
+    input_content.value = "";
+    console.log(input_content);
+    document.getElementById("country-input").value.innertext = "";
     for (let i = 0; i < countries.length; i++) {
         countryDiv = buildDiv("country");
         countryDiv.setAttribute("class", "row coutry");
