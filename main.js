@@ -1,19 +1,19 @@
-let all = document.getElementById("all");
-let countryName = document.getElementById("country-name");
-let content = document.getElementById("content");
+const all = document.getElementById("all");
+const countryName = document.getElementById("country-name");
+const content = document.getElementById("content");
 let countryDiv = "";
 
 all.addEventListener("click", function (e) {
     e.preventDefault();
-    let url = 'https://restcountries.eu/rest/v2/all';
+    const url = 'https://restcountries.eu/rest/v2/all';
     sendToCountries(url);
 
 })
 countryName.addEventListener("click", function (e) {
     e.preventDefault();
-    let countryInput = document.getElementById("country-input");
-    let country = countryInput.value;
-    let url = 'https://restcountries.eu/rest/v2/name/' + country;
+    const countryInput = document.getElementById("country-input");
+    const country = countryInput.value;
+    const url = 'https://restcountries.eu/rest/v2/name/' + country;
     sendToCountries(url);
 
 })
@@ -38,16 +38,15 @@ function sendToCountries(url) {
 }
 function buildPage(countries) {
     content.innerHTML = '';
-    let input_content = document.getElementById("country-input");
-    input_content.value = "";
-    console.log(input_content);
+    const inputContent = document.getElementById("country-input");
+    inputContent.value = "";
     document.getElementById("country-input").value.innertext = "";
     for (let i = 0; i < countries.length; i++) {
         countryDiv = buildDiv("country");
-        countryDiv.setAttribute("class", "row coutry");
-        let textDiv = buildDiv("text-cl");
+        countryDiv.setAttribute("class", "row country");
+        const textDiv = buildDiv("text-cl");
         textDiv.setAttribute("class", "col-sm text-cl");
-        let imgDiv = buildDiv("img-cl");
+        const imgDiv = buildDiv("img-cl");
         imgDiv.setAttribute("class", "col-sm img-cl");
         textDiv.innerHTML += "<div>Name: " + countries[i].name + "</div>";
         textDiv.innerHTML += "<div>Top Leve Domain: " + countries[i].topLevelDomain + "</div>";
@@ -61,7 +60,7 @@ function buildPage(countries) {
 }
 
 function buildDiv(cl) {
-    var divElement = document.createElement('div');
+    const divElement = document.createElement('div');
     divElement.setAttribute('class', cl);
     return divElement;
 }
